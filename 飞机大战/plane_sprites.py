@@ -39,3 +39,25 @@ class GameSprite(pygame.sprite.Sprite):
         # 在屏幕的垂直方向上移动
         self.rect.y += self.speed
 
+
+class Background(GameSprite):
+    """ 游戏背景精灵 """
+    def __init__(self, is_alt = False):
+
+        # 1. 调用父类方法实现精灵的创建（image/rect/speed）
+        super().__init__("./images/background.png")
+
+        # 2. 判断是否是交替图像，如果是，需要设置初始位置
+        if is_alt:
+            self.rect.y = -self.rect.height
+
+    def update(self):
+
+        # 1. 调用父类的方法实现
+        super().update()
+
+        # 2. 判断是否移除屏幕，如果移除屏幕，将图像设置到屏幕的上方
+        if self.rect.y >= SCREEN_RECT.height:
+            self.rect.y = -self.rect.height
+
+
