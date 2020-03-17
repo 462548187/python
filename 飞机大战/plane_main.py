@@ -39,6 +39,9 @@ class PlaneGame(object):
 
         self.back_group = pygame.sprite.Group(bg1, bg2)
 
+        # 创建敌机的精灵组
+        self.enemy_group = pygame.sprite.Group()
+
     def start_game(self):
         print("游戏开始...")
 
@@ -55,12 +58,19 @@ class PlaneGame(object):
             pygame.display.update()
 
     def __event_handler(self):
+
         for event in pygame.event.get():
+
             # 判断是否退出游戏
             if event.type == pygame.QUIT:
                 PlaneGame.__game_over()
             elif event.type == CREATE_ENEMY_EVENT:
                 print("敌机出厂...")
+                # 创建敌机精灵
+                enemy = Enemy()
+
+                # 将敌机精灵添加到敌机精灵组
+                self.enemy_group.add(enemy)
 
     def __check_collide(self):
         pass
@@ -69,6 +79,9 @@ class PlaneGame(object):
 
         self.back_group.update()
         self.back_group.draw(self.screen)
+
+        self.enemy_group.update()
+        self.enemy_group.draw(self.screen)
 
     @staticmethod
     def __game_over():
