@@ -20,6 +20,9 @@ SCREEN_RECT = pygame.Rect(0, 0, 480, 700)
 # 刷新的帧率
 FRAME_PER_SEC = 60
 
+# 创建敌机的定时器常量
+CREATE_ENEMY_EVENT = pygame.USEREVENT
+
 
 class GameSprite(pygame.sprite.Sprite):
     """ 飞机大战游戏精灵 """

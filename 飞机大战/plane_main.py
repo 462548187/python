@@ -28,6 +28,9 @@ class PlaneGame(object):
         # 3. 调用私有方法，精灵和精灵组的创建
         self.__create_sprites()
 
+        # 4. 设置定时器事件 - 创建敌机 1s
+        pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
+
     def __create_sprites(self):
 
         # 创建背景精灵和精灵组
@@ -56,6 +59,8 @@ class PlaneGame(object):
             # 判断是否退出游戏
             if event.type == pygame.QUIT:
                 PlaneGame.__game_over()
+            elif event.type == CREATE_ENEMY_EVENT:
+                print("敌机出厂...")
 
     def __check_collide(self):
         pass
