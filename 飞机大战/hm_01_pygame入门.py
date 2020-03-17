@@ -14,6 +14,7 @@
 
 import pygame
 
+# 游戏的初始化
 pygame.init()
 
 # 编写游戏的代码

@@ -13,6 +13,7 @@
 """
 import pygame
 
+# 游戏的初始化
 pygame.init()
 
 # 创建游戏主窗口 480 * 700
