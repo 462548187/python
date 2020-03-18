@@ -30,7 +30,7 @@ class PlaneGame(object):
 
         # 4. 设置定时器事件 - 创建敌机 1s
         pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
-        pygame.time.set_timer(HERO_FIRE_EVENT, 100)
+        pygame.time.set_timer(HERO_FIRE_EVENT, 500)
 
     def __create_sprites(self):
 
@@ -112,6 +112,10 @@ class PlaneGame(object):
         # 英雄更新、加载屏幕
         self.hero_group.update()
         self.hero_group.draw(self.screen)
+
+        # 子弹更新、加载屏幕
+        self.hero.bullets.update()
+        self.hero.bullets.draw(self.screen)
 
     @staticmethod
     def __game_over():
