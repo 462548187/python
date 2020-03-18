@@ -25,6 +25,9 @@ FRAME_PER_SEC = 60
 # 创建敌机的定时器常量
 CREATE_ENEMY_EVENT = pygame.USEREVENT
 
+# 英雄发射子弹事件常量
+HERO_FIRE_EVENT = pygame.USEREVENT + 1
+
 
 class GameSprite(pygame.sprite.Sprite):
     """ 飞机大战游戏精灵 """
@@ -113,3 +116,12 @@ class Hero(GameSprite):
 
         # 英雄在水平方向移动
         self.rect.x += self.speed
+
+        # 控制英雄不能离开屏幕
+        if self.rect.x < 0:
+            self.rect.x = 0
+        elif self.rect.right > SCREEN_RECT.right:
+            self.rect.right = SCREEN_RECT.right
+
+    def fire(self):
+        print("发射子弹...")
