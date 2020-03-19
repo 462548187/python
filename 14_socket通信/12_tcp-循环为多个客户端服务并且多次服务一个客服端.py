@@ -28,6 +28,8 @@ def main():
         # 4. 等待别人的电话到来 (等待客户端的链接 accept)
         new_client_socket, client_addr = tcp_server_socket.accept()
         print("一个新的客户端已经到来 %s" % str(client_addr))
+
+        # 循环的目的：为同一个客户端 服务多次
         while True:
             # 接收客户端发送的请求
             recv_data = new_client_socket.recv(1024)
@@ -36,7 +38,7 @@ def main():
             # 如果 recv 解堵塞，那么有2种方式：
             # 1. 客户端发送过来数据
             # 2. 客户端调用close导致了，这里 recv 解堵塞
-            if len(recv_data) > 0:
+            if len(recv_data):
                 # 回送一部分数据给客户端
                 new_client_socket.send("---ok---".encode("gbk"))
             else:
@@ -45,7 +47,7 @@ def main():
         # 关闭套接字
         # 关闭 accept 返回的套接字，意味着，不会在为这个客户端服务
         new_client_socket.close()
-        print("已经服务完毕...")
+        print("已经为这个客户端服务完毕...")
 
     # 如果将监听套接字 关闭了，那么会导致不能再次等待新客户端到来，即 XXX.accept 就会失败
     tcp_server_socket.close()
