@@ -4,7 +4,7 @@
     @Author         :  Sandy
     @Version        :  
   ----------------------------------
-    @File           :  08_多线程共享全局变量.py
+    @File           :  09_共享全局变量问题-资源竞争.py
     @Description    :  
     @CreateTime     :  2020-03-20 16:24
     @Software       :  PyCharm
